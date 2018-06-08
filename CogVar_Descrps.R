@@ -78,11 +78,11 @@ wmi_desc <- describe(dcog$wmi45a)
 
 hist(dcog$psi45a)
 psi_desc <- describe(dcog$psi45a)
-#normal enough
+#processing speed is normal enough
 
 hist(dcog$fsiq45a)
 fsiq_desc <- describe(dcog$fsiq45a)
-#normal enough
+#full scale IQ is normal enough
 
 hist(dcog$GpDomTim45)
 GpDom45_desc <- describe(dcog$GpDomTim45)
@@ -90,25 +90,83 @@ dcog$GpDomTim45_lg <- log(dcog$GpDomTim45)
 boxplot(dcog$GpDomTim45_lg)
 #log transformed, looks like there are some potential 
 #outliers that may come up in future analyses
+#Should discuss Peg Board dom hand
 
 hist(dcog$GpDif45)
 GpDif45_desc <- describe(dcog$GpDif45) 
 boxplot(dcog$GpDif45)
 #some clear outliers, unsure whether to transform or 
 #deal with that at all right now...
+#should discuss pegboard nondom hand.
 
 hist(dcog$RAVLtot45)
 RAVLtot45_desc <- describe(dcog$RAVLtot45)
-#normal
+#Rey Audit Verb Learning total correct is normal
 
 hist(dcog$RAVLrec45)
 RAVLrec45_desc <- describe(dcog$RAVLrec45)
-#normal enough
+#RAVL recall N correct is normal enough
 
 hist(dcog$TrailB45)
 TrailB45_desc <- describe(dcog$TrailB45)
 dcog$TrailB45_sqrt <- sqrt(dcog$TrailB45)
 boxplot(dcog$TrailB45_sqrt)
 hist(dcog$TrailB45_sqrt)
+Trail45_desc <- describe(dcog$TrailB45)
 #not sure if we want to stay with that transformation. Something to think about.
+#should discuss trails test B, timed in seconds
 
+#that is it for adult cognitive variables for now
+
+
+
+
+
+
+#Let's look at childhood variables
+
+hist(dcog$ZCHBR3)
+ZCHBR3_desc <- describe(dcog$ZCHBR3)
+#I think this has already been z-scored? Not sure about transforming 
+#this one. It does have a negative skew
+
+hist(dcog$wviq7911)
+wviq7_desc <- describe(dcog$wviq7911)
+#mean verbal IQ in chldhood looks normal enoguh
+
+hist(dcog$wpiq711)
+wpiq7_desc <- describe(dcog$wpiq711)
+boxplot(dcog$wpiq711)
+#mean performance IQ is mostly normale with a slight negative skew
+
+hist(dcog$wfsiq711)
+wfsiq7_desc <- describe(dcog$wfsiq711)
+#mean fullscale IQ looks normal enough
+
+hist(dcog$RAVL13_tot)
+RAVL13tot_desc <- describe(dcog$RAVL13_tot)
+boxplot(dcog$RAVL13_tot)
+#RAVL 4 trials summed at 13 doesnt look too bad, but
+#there is definitely a negative skew. Not enough for me to transform right now
+
+hist(dcog$RAVL13_recl)
+RAVL13recl_desc <- describe(dcog$RAVL13_recl)
+boxplot(dcog$RAVL13_recl)
+#boxplot error?? Check with Max
+#definitely negative skew. Did not transform it
+
+hist(dcog$TrailsB13)
+TrailsB13_desc <- describe(dcog$TrailsB13)
+dcog$TrailsB13_lg <- log(dcog$TrailsB13)
+hist(dcog$TrailsB13_lg)
+boxplot(dcog$TrailsB13_lg)
+#severe positive skew. log transformed into more normal shape
+#although there is still slight positive skew
+
+hist(dcog$GPdom13)
+boxplot(dcog$GPdom13)
+#normal shape with outliers--into positive skew
+
+hist(dcog$GPdif13)
+boxplot(dcog$GPdif13)
+#mostly normal with slight negative skew due to probable outliers.
