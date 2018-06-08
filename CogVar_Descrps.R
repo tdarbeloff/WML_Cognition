@@ -170,3 +170,8 @@ boxplot(dcog$GPdom13)
 hist(dcog$GPdif13)
 boxplot(dcog$GPdif13)
 #mostly normal with slight negative skew due to probable outliers.
+
+#last cognition variable is GWAS
+hist(dcog$zrpgsEA3)
+#looks really normal. I know nothing about using this data, so I will
+#leave it alone for now.
