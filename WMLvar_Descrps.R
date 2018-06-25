@@ -56,3 +56,4 @@ hist(d_tbv$TotalGrayVol)
 hist(d_tbv$CerebralWhiteMatterVol)
 
 d_BM <- inner_join(d_wml, d_tbv, by=c("ID"))
+
