@@ -33,7 +33,7 @@ d_BP <- d_BP %>%
          ID = paste(to_add, subID, sep = ""))
 
 
-d_rvc <- as.data.frame(read_sav("Retinal45_combined_wk64.sav"))
+d_rvc <- as.data.frame(read_sav("H:/Projects/Tracy/DBIS/RVC/RVC/Retinal45_combined_wk64.sav"))
 
 d_rvc <- d_rvc %>%
   mutate(gsub("[[:space:]]", "", d_rvc$subID),
@@ -46,29 +46,15 @@ d <- inner_join(d_BP, d_wml, by=c("ID"))
 d <- inner_join(d, d_rvc, by=c("ID"))
 d <- inner_join(d, d_rvc38, by=c("ID"))
 
-#z-score retinal data
-d$Big6craep45_z <- scale(as.numeric(as.character(d$Big6craep45)))[,1]
-d$Big6crvep45_z <- scale(as.numeric(as.character(d$Big6crvep45)))[,1]
-d$Big6craep38_z <- scale(as.numeric(as.character(d$Big6craep38)))[,1]
-d$Big6crvep38_z <- scale(as.numeric(as.character(d$Big6crvep38)))[,1]
+
 
 #Transform wmh by log and z-score (retinal vessel caliber has already been checked and found normal)
 d$wholeBrainWMHvol_mm3_lg <- log(as.numeric(as.character(d$wholeBrainWMHvol_mm3)))
-d$wholeBrainWMHvol_mm3_z <- scale(d$wholeBrainWMHvol_mm3_lg)[,1]
-
-d$PVWMHvol_mm3_z <- scale(log(as.numeric(as.character(d$PVWMHvol_mm3))))[,1]
-d$DWMHvol_mm3_z <- scale(log(as.numeric(as.character(d$DWMHvol_mm3))))[,1]
-
-#transform and scale BP variables as necessary
-d$MAP45_z <- scale(as.numeric(as.character(d$MAP45)))[,1]
-d$Sysbp45_z <- scale(as.numeric(as.character(d$Sysbp45)))[,1]
-d$Diabp45_z <- scale(as.numeric(as.character(d$Diabp45)))[,1]
-
 
 #now lets check correlations between WMH and BP, etc.
-cor.test(d$MAP45_z, d$wholeBrainWMHvol_mm3_z)
-cor.test(d$MAP45_z, d$Big6craep45_z)
-cor.test(d$MAP45_z, d$Big6crvep45_z)
-cor.test(d$Sysbp45_z, d$wholeBrainWMHvol_mm3_z)
+cor.test(d$MAP45, d$wholeBrainWMHvol_mm3_lg)
+cor.test(d$MAP45, d$Big6craep45)
+cor.test(d$MAP45, d$Big6crvep45)
+cor.test(d$Sysbp45, d$wholeBrainWMHvol_mm3)
  
 
