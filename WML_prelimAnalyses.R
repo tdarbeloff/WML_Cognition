@@ -9,18 +9,16 @@ d <- inner_join(d_BM, dcog, by=c("ID"))
 #test a few childhood IQ measures, see if anything pops.
 cor.test(d$wholeBrainWMHvol_mm3_lg, d$ZCHBR3)
 cor.test(d$wholeBrainWMHvol_mm3_lg, d$wpiq711)
-cor.test(d$wholeBrainWMHvol_mm3_lg, d$wviq7911)
-cor.test(d$wholeBrainWMHvol_mm3_lg, d$wfsiq711)
 
 
-#double check with adult measures
+
+#double check with a couple adult measures
 cor.test(d$wholeBrainWMHvol_mm3_lg, d$fsiq45a)
 cor.test(d$PVWMHvol_mm3_lg, d$fsiq45a)
 
 cor.test(d$wholeBrainWMHvol_mm3_lg, d$vci45a)
 cor.test(d$wholeBrainWMHvol_mm3_lg, d$pri45a)
-cor.test(d$wholeBrainWMHvol_mm3_lg, d$wmi45a)
-cor.test(d$wholeBrainWMHvol_mm3_lg, d$psi45a)
+
 
 #double check what other IQ (age38) correlation was.
 d_IQ <- as.data.frame(read_sav("H:/Projects/Tracy/DBIS/RVC/RVC/Phase38_vars.sav"))
